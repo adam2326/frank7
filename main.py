@@ -171,7 +171,7 @@ def deal_summary():
 	# If user is logged in
 	if user:
 		nickname = users.nickname()
-		login_logout_url = users.create_logout_url('/')
+		login_logout_url = user.create_logout_url('/')
 		# instantiate a query object
 		query = Opportunity.query()
 		# filter: only obs from current year
