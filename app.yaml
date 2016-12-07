@@ -1,0 +1,30 @@
+application: cloud-training-144023
+version: alpha006
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /user/.*
+  script: main.app
+  login: required
+  secure: always
+
+- url: /.*/add_opportunity
+  script: main.app
+  login: required
+  secure: always
+
+- url: /.*/edit_opportunity/.*
+  script: main.app
+  login: required
+  secure: always
+
+- url: /.*
+  script: main.app
+  login: required
+  secure: always
+
+libraries:
+- name: jinja2
+  version: latest

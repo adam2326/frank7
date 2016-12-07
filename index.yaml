@@ -1,0 +1,11 @@
+indexes:
+- kind: Opportunity
+  ancestor: yes
+  properties:
+  - name: opp_start_date
+    direction: desc
+  - name: company_name
+  - name: existing_customer
+  - name: unit_name
+  - name: num_units
+  
