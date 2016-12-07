@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <!--ensure proper rendering and touch zooming-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--add content-->
+<body>
+
+<div class="container">
+	<h1>Opportunities: {{ nickname }}  <small><a href="{{ login_logout_url }}">sign out</a></small></h1>
+	<a href="{{ url_for('add_opportunity', nickname=nickname) }}" class="btn btn-info" role="button">Create New Opportunity</a>
+</div>
+
+
+<!--add space-->
+<br>
+<br>
+<br>
+<!--add space-->
+
+<!--add current opportunities table-->
+{% if opps_to_render %}
+<div class="container">
+  <h1>Current</h1>         
+  <table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Edit</th>
+		<th>Start Date</th>
+		<th>Company Name</th>
+		<th>Existing Customer</th>
+		<th>Unit</th>
+		<th># of Units</th>
+		<th>Milestone</th>
+		<th>Meter</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	{% for opp in opps_to_render %}
+		<tr>
+			<td>
+				<form action="{{url_for('edit_opportunity', opp_id = opp.key.id(),  nickname=nickname) }}" >
+				<input type="submit" name="edit_opportunity" value="Edit">
+				</form>
+			</td>
+			<td>{{ opp.opp_start_date }}</td>
+			<td>{{ opp.company_name }}</td>
+			<td>{{ opp.existing_customer }}</td>
+			<td>{{ opp.unit_name }}</td>
+			<td>{{ opp.num_units }}</td>
+			<td>{{ opp.milestone }}</td>
+			<td><meter min="0" max="10" low="2.5" high="7.5" optimum="10" value="{{ opp.milestone }}"></meter></td>
+		</tr>
+	{% endfor %}
+
+	</tbody>
+  </table>
+</div>
+
+
+{% else %}
+	<h3>Please add opportunities using the link above.</h3>
+{% endif %}
+<!--add current opportunities table-->
+
+
+<!--end of page-->
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <!--ensure proper rendering and touch zooming-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--page content-->
+<body>
+
+
+
+<div class="container">
+<form class="form-horizontal" action="{{ url_for('add_opportunity', nickname=nickname) }}" method="post">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add Opportunity</legend>
+
+<!-- STARTING DATE-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="start_date">Opportunity Starting Date</label>  
+  <div class="col-md-4">
+  <input id="start_date" name="inp_start_date" type="text" placeholder="MM-DD-YYY" class="form-control input-md" required="">
+  </div>
+</div>
+
+<!-- COMPANY NAME-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="company_name">Company Name</label>  
+  <div class="col-md-4">
+  <input id="company_name" name="inp_company_name" type="text" placeholder="XYZ Corp." class="form-control input-md" required=""> 
+  </div>
+</div>
+
+
+<!-- EXISTING CUSTOMER -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectexistingcustomer">Existing Customer?</label>
+  <div class="col-md-4">
+    <select id="selectexistingcustomer" name="inp_existing_customer" class="form-control">
+      <option value="Y">Yes</option>
+      <option value="N">No</option>
+    </select>
+  </div>
+</div>
+
+
+<!-- UNIT NAME -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectunitname">Select Unit Name</label>
+  <div class="col-md-4">
+    <select id="selectunitname" name="inp_unit_name" class="form-control">
+      <option value="1">Unit One</option>
+      <option value="2">Unit Two</option>
+    </select>
+  </div>
+</div>
+
+<!-- NUMBER OF UNITS-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="num_units">Number of Units</label>  
+  <div class="col-md-4">
+  <input id="num_units" name="inp_num_units" type="text" placeholder="# Units" class="form-control input-md" required=""> 
+  </div>
+</div>
+
+
+<!-- MILESTONE-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="milestones">Milestone</label>  
+  <div class="col-md-4">
+  <input id="milestone" name="inp_milestone" type="text" placeholder="# 1-10" class="form-control input-md" required=""> 
+  </div>
+</div>
+
+
+<!-- NOTES -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ae_notes">Notes</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="ae_notes" name="inp_ae_notes">Enter any additional info</textarea>
+  </div>
+</div>
+
+
+<!-- SUBMIT BUTTON -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit">Submit</label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+</body>
+</html>

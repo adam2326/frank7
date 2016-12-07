@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <!--ensure proper rendering and touch zooming-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<!--page content-->
+<body>
+
+<div class="container">
+<form class="form-horizontal" action="{{ url_for('edit_opportunity', nickname=nickname, opp_id= opp.key.id()) }}" method="post">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Edit Opportunity</legend>
+
+<!-- STARTING DATE-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="start_date">Opportunity Starting Date</label>  
+  <div class="col-md-4">
+  <input id="start_date" name="inp_start_date" type="text" value="{{ opp.opp_start_date }}" class="form-control input-md">
+  </div>
+</div>
+
+<!-- COMPANY NAME-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="company_name">Company Name</label>  
+  <div class="col-md-4">
+  <input id="company_name" name="inp_company_name" type="text" value="{{ opp.company_name }}" class="form-control input-md"> 
+  </div>
+</div>
+
+
+{% if opp.existing_customer == 'Y' %}
+    <!-- EXISTING CUSTOMER -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectexistingcustomer">Existing Customer?</label>
+      <div class="col-md-4">
+        <select id="selectexistingcustomer" name="inp_existing_customer" class="form-control">
+          <option value="Y" selected>Yes</option>
+          <option value="N">No</option>
+        </select>
+      </div>
+    </div>
+
+{% else %}
+
+    <!-- EXISTING CUSTOMER -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectexistingcustomer">Existing Customer?</label>
+      <div class="col-md-4">
+        <select id="selectexistingcustomer" name="inp_existing_customer" class="form-control">
+          <option value="Y" >Yes</option>
+          <option value="N" selected>No</option>
+        </select>
+      </div>
+    </div>
+{% endif %}
+
+
+
+
+
+{% if opp.unit_name == 1 %}
+<!-- UNIT NAME -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectunitname">Select Unit Name</label>
+  <div class="col-md-4">
+    <select id="selectunitname" name="inp_unit_name" class="form-control">
+      <option value="1" selected>Unit One</option>
+      <option value="2">Unit Two</option>
+    </select>
+  </div>
+</div>
+
+{% else %}
+
+<!-- UNIT NAME -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="selectunitname">Select Unit Name</label>
+  <div class="col-md-4">
+    <select id="selectunitname" name="inp_unit_name" class="form-control">
+      <option value="1" >Unit One</option>
+      <option value="2" selected>Unit Two</option>
+    </select>
+  </div>
+</div>
+{% endif %}
+
+
+
+
+
+
+
+<!-- NUMBER OF UNITS-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="num_units">Number of Units</label>  
+  <div class="col-md-4">
+  <input id="num_units" name="inp_num_units" type="text" value="{{ opp.num_units }}" class="form-control input-md" > 
+  </div>
+</div>
+
+<!-- MILESTONE-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="milestone">Milestone</label>  
+  <div class="col-md-4">
+  <input id="milestone" name="inp_milestone" type="text" value="{{ opp.milestone }}" class="form-control input-md" > 
+  </div>
+</div>
+
+
+
+<!-- NOTES -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ae_notes">Notes</label>
+  <div class="col-md-4">                     
+    <textarea class="form-control" id="ae_notes" name="inp_ae_notes">{{ opp.notes }}</textarea>
+  </div>
+</div>
+
+
+
+<!-- SUBMIT BUTTON -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit">Submit Edits</label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+</body>
+</html>
